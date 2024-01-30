@@ -16,25 +16,34 @@ def del_content(folder: str):
 
 
 def clean():
-    print('cleaning')
-
-    print('clear user temp')
-    del_content(f'{os.environ["tmp"]}')
-    print('completed')
-
-    print('clear system temp')
-    del_content(f'{os.environ["SystemRoot"]}\\temp')
-    print('completed')
-
-    print('clear internet cache')
-    del_content(f'{os.environ["LOCALAPPDATA"]}\\Microsoft\\Windows\\INetCache\\IE')
-    print('completed')
-
-    print('clear recycle bin')
-    del_content(f'{os.environ["SystemDrive"]}\\$Recycle.Bin')
-    print('completed')
-
     root.withdraw()
+
+    print('cleaning')
+    try:
+        print('clear user temp')
+        del_content(f'{os.environ["tmp"]}')
+        print('completed')
+    except Exception:
+        print('pass')
+    try:
+        print('clear system temp')
+        del_content(f'{os.environ["SystemRoot"]}\\temp')
+        print('completed')
+    except Exception:
+        print('pass')
+
+    try:
+        print('clear internet cache')
+        del_content(f'{os.environ["LOCALAPPDATA"]}\\Microsoft\\Windows\\INetCache\\IE')
+        print('completed')
+    except Exception:
+        print('pass')
+    try:
+        print('clear recycle bin')
+        del_content(f'{os.environ["SystemDrive"]}\\$Recycle.Bin')
+        print('completed')
+    except Exception:
+        print('pass')
 
     try:
         print('cleanmgr')
